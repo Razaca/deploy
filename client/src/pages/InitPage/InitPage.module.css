@@ -1,0 +1,14 @@
+.InitPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.InitPage span{
+    font-family: "Neon";
+    font-size: 2rem;
+    cursor: pointer;
+}
+

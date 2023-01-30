@@ -1,0 +1,39 @@
+.DetailsPage {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+img {
+    width: 50vw;
+    object-fit: contain;
+    padding: 1rem;
+    border: 5px solid var(--primary-color);
+    box-shadow: var(--blue-neon);
+    border-radius: 5px;
+}
+
+.border{
+    margin: 1rem 4rem;
+    padding: 1.3rem;
+    border: 3px solid var(--other-color);
+    box-shadow: var(--pink-neon);
+    border-radius: 5px;
+}
+
+.border h2{
+    margin: 1rem 0;
+    font-family: "MyFont";
+    font-size: 3rem;
+    text-shadow: 0 0 30px var(--other-color);
+}
+
+.description{
+    font-size: 2rem;
+    font-family: "Neon";
+    margin: 0 3rem;
+    line-height: 1.5rem;
+}
+

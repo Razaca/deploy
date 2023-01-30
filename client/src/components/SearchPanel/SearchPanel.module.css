@@ -1,0 +1,19 @@
+.SearchPanel {
+    padding: 2rem;
+    margin: 1rem 5rem;
+    border-radius: 5px;
+    border: 5px solid var(--other-color);
+    box-shadow: var(--pink-neon);
+}
+
+.inputText {
+    padding: .5rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-family: "Neon";
+    font-size: 2rem;
+    text-shadow: 0 0 15px var(--primary-color);
+    border: none;
+    text-align: center;
+}
+

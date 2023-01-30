@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #05d9e8;
+  --secondary-color: #005678;
+  --other-color: #ff2a6d;
+  --light-color: #d1f7ff;
+  --dark-color: #01012b;
+  --pink-neon: inset 0px 0px 5px var(--other-color),
+    inset 0px 0px 15px var(--other-color),
+    inset 0px 0px 30px rgba(255, 255, 255, 0.367),
+    0 0 5px var(--other-color),
+    0 0 15px var(--other-color),
+    0px 0px 30px rgba(255, 255, 255, 0.367);
+  --blue-neon: inset 0px 0px 5px var(--primary-color),
+  inset 0px 0px 15px var(--primary-color),
+  inset 0px 0px 30px rgba(255, 255, 255, 0.367),
+  0 0 5px var(--primary-color),
+  0 0 15px var(--primary-color),
+  0px 0px 30px rgba(255, 255, 255, 0.367);
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url("./assets/CyberwayRiders-lg97d.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Neon";
+  src: url("./assets/NeonNanoborg-388M.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  color: var(--primary-color);
+  text-align: center;
+  font-family: "Neon";
+  font-size: 1.5rem;
+}
+
+textarea{
+  resize: none;
+}

@@ -1,0 +1,6 @@
+.Navigate {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}

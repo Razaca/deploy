@@ -1,0 +1,21 @@
+.Cards {
+    padding: 3rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gamesCharged {
+    font-size: 3rem;
+    font-family: "Neon";
+    position: relative;
+    top: 1.5rem;
+}
+
+.gamesCharged span{
+    font-family: "Neon";
+    color: var(--other-color);
+    margin-left: .5rem;
+}

@@ -1,0 +1,58 @@
+.Title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Title span:nth-child(1) {
+    width: min-content;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 10rem;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(var(--primary-color), #05d9e854, transparent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+
+}
+
+.Title span:nth-child(2) {
+    width: min-content;
+    font-size: 8rem;
+    font-family: "MyFont";
+    color: var(--other-color);
+    transform: rotate(-10deg);
+    position: relative;
+    top: -100px;
+    text-shadow: 0 0 30px var(--other-color);
+    cursor: pointer;
+}
+
+.Title span:nth-child(2):hover {
+    animation: neon 1s ease-in-out infinite;
+}
+
+@keyframes neon {
+    0% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0.2;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

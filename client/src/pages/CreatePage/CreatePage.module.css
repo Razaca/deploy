@@ -1,0 +1,55 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form input[type='text'],
+.form input[type='date'],
+.form input[type='number'],
+.form textarea {
+    width: 400px;
+    margin: 1rem;
+    padding: .5rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 5px solid var(--primary-color);
+    box-shadow: var(--blue-neon);
+    text-shadow: 0 0 5px var(--primary-color);
+    border-radius: 5px;
+    font-family: "Neon";
+    font-size: 1.5rem;
+}
+
+
+.genres {
+    max-width: 500px;
+    margin: 2rem 0;
+    text-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.genres div {
+    margin: .5rem;
+    padding: 0 .5rem;
+    border: 5px solid var(--primary-color);
+    box-shadow: var(--blue-neon);
+    color: var(--primary-color);
+    border-radius: 5px;
+    text-shadow: 0 0 5px var(--primary-color);
+    font-family: "Neon";
+    font-size: 1.5rem;
+}
+
+.genres input {
+    margin: .5rem;
+}
+
+.genres input:checked {
+    box-shadow: var(--pink-neon);
+
+}

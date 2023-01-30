@@ -1,0 +1,39 @@
+.Board {
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+.cards {
+    min-height: 50vh;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--blue-neon);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+.buttons {
+    display: flex;
+    position: relative;
+    left: 3rem;
+    z-index: 5;
+}
+
+.buttons span {
+    margin-right: 1rem;
+    padding: .4rem 1rem;
+    -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    box-shadow: var(--pink-neon);
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-family: "Neon";
+    font-size: 1.5rem;
+    color: var(--other-color);
+    cursor: pointer;
+}
+
+.buttons .active {
+    box-shadow: var(--blue-neon);
+    color: var(--primary-color);
+}
