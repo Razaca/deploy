@@ -57,6 +57,7 @@ const CreatePage = () => {
       .catch((error) => console.log("error", error));
   }
 
+  
   useEffect(() => {
     if (genres.length === 0) {
       dispatch(setGenres());
