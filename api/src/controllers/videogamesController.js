@@ -15,7 +15,7 @@ async function getVideogames(name, page) {
         `https://api.rawg.io/api/games${API_KEY}&search=${name}`
       ))
     : (dataApi = await axios(
-        `https://api.rawg.io/api/games${API_KEY}&page=${page ? page : 0}`
+        `https://api.rawg.io/api/games${API_KEY}&page=${page ? page : 1}`
       ));
   dataApi = dataApi.data.results;
 
