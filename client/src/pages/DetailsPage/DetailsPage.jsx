@@ -8,7 +8,7 @@ const DetailsPage = () => {
   const [game, setGame] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:3001/videogames/${id}`).then((res) => {
+    axios(`https://deploy-xifk.vercel.app/videogames/${id}`).then((res) => {
       setGame(res.data.game.data);
       console.log(game);
     });

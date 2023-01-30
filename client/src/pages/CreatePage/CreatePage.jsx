@@ -51,7 +51,7 @@ const CreatePage = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/videogames", requestOption)
+    fetch("https://deploy-xifk.vercel.app//videogames", requestOption)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
