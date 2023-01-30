@@ -51,13 +51,13 @@ const CreatePage = () => {
       redirect: "follow",
     };
 
-    fetch("deploy-production-962d.up.railway.app/videogames", requestOption)
+    fetch("https://deploy-production-962d.up.railway.app/videogames", requestOption)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   }
 
-  
+
   useEffect(() => {
     if (genres.length === 0) {
       dispatch(setGenres());
