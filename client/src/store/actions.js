@@ -8,6 +8,7 @@ export const SEARCH_BY_GENRE = "SEARCH_BY_GENRE";
 export const CLEAN_ERRORS = "CLEAN_ERRORS";
 export const ERROR = "ERROR";
 
+//https://deploy-production-962d.up.railway.app/videogames
 export const getGames = (url) => {
   return function (dispatch) {
     fetch(url)
@@ -32,7 +33,7 @@ export const getGames = (url) => {
 };
 
 export const findGames = (name) => {
-  const url = `http://localhost:3001/videogames?name=${name}`;
+  const url = `https://deploy-production-962d.up.railway.app/videogames?name=${name}`;
   return function (dispatch) {
     fetch(url)
       .then((response) => {
@@ -52,7 +53,7 @@ export const findGames = (name) => {
 };
 
 export const setGenres = () => {
-  const url = `http://localhost:3001/genres`;
+  const url = `https://deploy-production-962d.up.railway.app/genres`;
   return function (dispatch) {
     fetch(url)
       .then((response) => response.json())
