@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
 
@@ -60,7 +59,10 @@ export const useForm = (initialForm, validateForm) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/videogames", requestOption)
+    fetch(
+      "https://deploy-production-962d.up.railway.app/videogames/videogames",
+      requestOption
+    )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
