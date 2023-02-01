@@ -53,3 +53,8 @@
     box-shadow: var(--pink-neon);
 
 }
+
+.error{
+    border: 5px solid var(--other-color) !important;
+    box-shadow: var(--pink-neon) !important;
+}

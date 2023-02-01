@@ -8,6 +8,7 @@ import {
   ERROR,
   CLEAN_ERRORS,
   REVERSE_ORDER,
+  LOADING,
 } from "./actions";
 
 const initialState = {
@@ -15,8 +16,9 @@ const initialState = {
   search: [],
   genres: [],
   recents: [],
-  error: null,
   pages: 0,
+  error: null,
+  loading: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,12 +35,14 @@ const reducer = (state = initialState, action) => {
         pages: state.pages + 1,
         videogames: [...state.videogames, ...ofApi],
         recents: [...ofDB],
+        loading: false,
       };
 
     case FIND_GAMES:
       return {
         ...state,
         search: action.payload,
+        loading: false,
       };
 
     case SET_GENRES:
@@ -73,10 +77,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: gamesSomeGenre,
+        loading: false,
       };
 
     case ERROR:
-      return { ...state, error: action.payload };
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
 
     case CLEAN_ERRORS:
       return {
@@ -89,6 +98,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         videogames: reverse,
+      };
+
+    case LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     default:

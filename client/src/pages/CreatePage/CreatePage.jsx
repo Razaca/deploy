@@ -1,62 +1,34 @@
-import { useState } from "react";
-import { setGenres } from "../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import Button from "../../components/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { setGenres } from "../../store/actions";
+import { useForm } from "./useForm";
 import s from "./CreatePage.module.css";
+
+import { platformsArray } from "./platformsArray";
+import Platforms from "./Platforms";
+import validation from "./validate";
+
+import Button from "../../components/Button/Button";
+import Title from "../../components/Title/Title";
+
+const initialForm = {
+  name: "",
+  description: "",
+  image: "",
+  released: "",
+  rating: 0,
+  genres: {},
+  platforms: {},
+};
 
 const CreatePage = () => {
   const dispatch = useDispatch();
   const { genres } = useSelector((store) => store);
 
-  const [game, setGame] = useState({
-    name: "",
-    description: "",
-    image: "",
-    released: "",
-    rating: 0,
-    platforms: ["pc"],
-  });
-  const [checkedItems, setCheckedItems] = useState({});
-
-  function handleChange(e) {
-    setGame({
-      ...game,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  function handleChangeGenres(e) {
-    setCheckedItems({
-      ...checkedItems,
-      [e.target.value]: e.target.checked,
-    });
-  }
-
-  function handleSubmit() {
-    const genres = [];
-    for (const key in checkedItems) {
-      if (checkedItems[key]) {
-        genres.push(parseInt(key));
-      }
-    }
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const requestOption = {
-      method: "POST",
-      headers: myHeaders,
-      body: JSON.stringify({ ...game, genres }),
-      redirect: "follow",
-    };
-
-    fetch("https://deploy-production-962d.up.railway.app/videogames", requestOption)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }
-
+  const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
+    initialForm,
+    validation
+  );
 
   useEffect(() => {
     if (genres.length === 0) {
@@ -67,47 +39,71 @@ const CreatePage = () => {
 
   return (
     <div className={s.CreatePage}>
-      <div onSubmit={(e) => {}} className={s.form}>
+      <Title />
+      <h3>Crear juego</h3>
+      <div className={s.form}>
+        {errors.name && errors.name}
         <input
-          onChange={(e) => handleChange(e)}
-          placeholder="Ingresa el nombre del juego"
-          value={game.name}
+          className={errors.name ? s.error : null}
           type="text"
           name="name"
+          placeholder="Escribe un nombre"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={form.name}
+          required
         />
 
+        {errors.description && errors.description}
         <textarea
-          onChange={(e) => handleChange(e)}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          className={errors.description ? s.error : null}
           placeholder="Ingresa una Descripcion"
-          value={game.description}
+          value={form.description}
           name="description"
           rows="10"
         ></textarea>
 
+        {errors.image && errors.image}
         <input
-          onChange={(e) => handleChange(e)}
+          className={errors.image ? s.error : null}
+          onBlur={handleBlur}
+          onChange={handleChange}
           placeholder="Ingresa URL con la imagen del juego"
-          value={game.image}
+          value={form.image}
           type="text"
           name="image"
         />
 
-        <input onChange={(e) => handleChange(e)} name="released" type="date" />
-
+        {errors.released && errors.released}
         <input
-          onChange={(e) => handleChange(e)}
-          value={game.rating}
-          name="rating"
-          type="number"
+          className={errors.released ? s.error : null}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          name="released"
+          type="date"
         />
 
+        {errors.rating && errors.rating}
+        <input
+          className={errors.rating ? s.error : null}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={form.rating}
+          name="rating"
+          type="number"
+          placeholder="rating"
+        />
+
+        {errors.genres && errors.genres}
         <div className={s.genres}>
           {genres &&
             genres.map((el, i) => (
               <div key={i}>
                 <label htmlFor={el.name}>{el.name}</label>
                 <input
-                  onChange={(e) => handleChangeGenres(e)}
+                  onChange={(e) => handleChange(e)}
                   type="checkbox"
                   name="genres"
                   value={el.id}
@@ -117,7 +113,11 @@ const CreatePage = () => {
             ))}
         </div>
 
+        {errors.platforms && errors.platforms}
+        <Platforms platforms={platformsArray} handleChange={handleChange} />
+
         <Button fn={() => handleSubmit()}>Agregar</Button>
+        <Button fn={() => console.log(form)}>log</Button>
       </div>
     </div>
   );

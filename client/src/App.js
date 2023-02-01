@@ -10,6 +10,7 @@ import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import CreatePage from "./pages/CreatePage/CreatePage";
 import Modal from "./components/Modal/Modal";
 
+
 function App() {
   const [isOpenModalError, closeModalError] = useModal(true);
   const { error } = useSelector((store) => store);

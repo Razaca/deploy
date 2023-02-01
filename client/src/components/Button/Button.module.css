@@ -1,4 +1,4 @@
-.Button{
+.Button {
     margin: 1rem;
     padding: .5rem;
     background-color: transparent;
@@ -11,3 +11,9 @@
     text-shadow: 0 0 5px var(--other-color);
 }
 
+.Button[disabled] {
+    border: 5px solid grey;
+    box-shadow: none;
+    color: grey;
+    text-shadow: none;
+}

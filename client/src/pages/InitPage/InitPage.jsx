@@ -13,31 +13,11 @@ const InitPage = () => {
 
   useEffect(() => {
     if (videogames.length === 0) {
-      dispatch(
-        getGames(
-          `https://deploy-production-962d.up.railway.app/videogames?page=1`
-        )
-      );
-      dispatch(
-        getGames(
-          `https://deploy-production-962d.up.railway.app/videogames?page=2`
-        )
-      );
-      dispatch(
-        getGames(
-          `https://deploy-production-962d.up.railway.app/videogames?page=3`
-        )
-      );
-      dispatch(
-        getGames(
-          `https://deploy-production-962d.up.railway.app/videogames?page=4`
-        )
-      );
-      dispatch(
-        getGames(
-          `https://deploy-production-962d.up.railway.app/videogames?page=5`
-        )
-      );
+      dispatch(getGames(`http://localhost:3001/videogames?page=1`));
+      dispatch(getGames(`http://localhost:3001/videogames?page=2`));
+      dispatch(getGames(`http://localhost:3001/videogames?page=3`));
+      dispatch(getGames(`http://localhost:3001/videogames?page=4`));
+      dispatch(getGames(`http://localhost:3001/videogames?page=5`));
     }
     if (genres.length === 0) {
       dispatch(setGenres());

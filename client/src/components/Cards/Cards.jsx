@@ -1,15 +1,17 @@
+import React, { lazy, Suspense, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getGames, setLoading } from "../../store/actions";
 import { splitArray } from "../../helpers";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getGames } from "../../store/actions";
 import s from "./Cards.module.css";
-import Card from "../Card/Card";
+//import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 import Navigate from "../Navigate/Navigate";
 import Button from "../Button/Button";
 import OrderButtons from "../OrderButtons/OrderButtons";
+const Card = lazy(() => import("../Card/Card"));
 
 const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
+  const { loading } = useSelector((store) => store);
   const [page, setPage] = useState(0);
   const dispatch = useDispatch();
 
@@ -22,7 +24,7 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
 
   function handlePage(op) {
     window.scrollTo(0, 0);
-    dispatch(getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`));
+    dispatch(getGames(`http://localhost:3001/videogames?page=${pages + 1}`));
     setPage(op);
   }
 
@@ -40,7 +42,13 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
         <Navigate handlePage={handlePage} page={page} />
         <div className={s.Cards}>
           {split.length ? (
-            split[page].map((el, i) => <Card game={el} key={i} />)
+            split[page].map((el, i) => (
+              <div key={i}>
+                <Suspense fallback={<Loader />}>
+                  <Card game={el} />
+                </Suspense>
+              </div>
+            ))
           ) : (
             <Loader />
           )}
@@ -63,18 +71,26 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
         )}
         <div className={s.Cards}>
           {games.length ? (
-            games.map((el, i) => <Card game={el} key={i} />)
+            games.map((el, i) => (
+              <div key={i}>
+                <Suspense fallback={<Loader />}>
+                  <Card game={el} />
+                </Suspense>
+              </div>
+            ))
           ) : (
             <Loader />
           )}
         </div>
         {show === "all" && (
           <Button
-            fn={() =>
+            fn={() => {
+              dispatch(setLoading())
               dispatch(
-                getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`)
-              )
-            }
+                getGames(`http://localhost:3001/videogames?page=${pages + 1}`)
+              );
+            }}
+            disabled={loading ? true : false}
           >
             Cargar mas
           </Button>

@@ -7,14 +7,14 @@ export const REVERSE_ORDER = "REVERSE_ORDER";
 export const SEARCH_BY_GENRE = "SEARCH_BY_GENRE";
 export const CLEAN_ERRORS = "CLEAN_ERRORS";
 export const ERROR = "ERROR";
+export const LOADING = "LOADING";
 
-//https://deploy-production-962d.up.railway.app/videogames
 export const getGames = (url) => {
   return function (dispatch) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        if (data.err) {
+        if (data.error) {
           dispatch({
             type: ERROR,
             payload: "Problemas con el servidor. Recarga la pagina",
@@ -33,14 +33,14 @@ export const getGames = (url) => {
 };
 
 export const findGames = (name) => {
-  const url = `https://deploy-production-962d.up.railway.app/videogames?name=${name}`;
+  const url = `http://localhost:3001/videogames?name=${name}`;
   return function (dispatch) {
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        if (data.err) {
+        if (data.error) {
           dispatch({ type: ERROR, payload: data.err });
         } else {
           dispatch({ type: FIND_GAMES, payload: data.games });
@@ -53,12 +53,12 @@ export const findGames = (name) => {
 };
 
 export const setGenres = () => {
-  const url = `https://deploy-production-962d.up.railway.app/genres`;
+  const url = `http://localhost:3001/genres`;
   return function (dispatch) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        if (data.er) {
+        if (data.error) {
           dispatch({ type: ERROR, payload: data.err });
         } else {
           dispatch({ type: SET_GENRES, payload: data.genres });
@@ -103,3 +103,16 @@ export const reverseOrder = () => {
     type: REVERSE_ORDER,
   };
 };
+
+export const setError = (error) => {
+  return {
+    type: ERROR,
+    payload: error
+  };
+}
+
+export const setLoading = () => {
+  return{
+    type: LOADING
+  }
+}

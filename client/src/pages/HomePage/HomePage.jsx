@@ -24,7 +24,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (videogames.length === 0) {
-      dispatch(getGames(`https://deploy-production-962d.up.railway.app/videogames?page=1`));
+      dispatch(getGames(`http://localhost:3001/videogames?page=1`));
     }
     if (genres.length === 0) {
       dispatch(setGenres());
