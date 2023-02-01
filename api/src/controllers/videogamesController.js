@@ -58,7 +58,13 @@ async function getVideogames(name, page) {
 }
 
 async function getVideogameById(id) {
-  let data = await Videogame.findByPk(id);
+  let data = await Videogame.findByPk(id, {
+    include: [
+      {
+        model: Genre,
+      },
+    ],
+  });
 
   if (!data) {
     const api = await axios(`https://api.rawg.io/api/games/${id}${API_KEY}`);
@@ -72,6 +78,7 @@ async function getVideogameById(id) {
       rating: game.rating,
       image: game.background_image,
       platforms: game.platforms,
+      genres: game.genres.map((el) => el.name),
     };
 
     return { data };

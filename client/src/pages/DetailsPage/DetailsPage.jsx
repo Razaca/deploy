@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import s from "./DetailsPage.module.css";
+import ToHome from "../../components/ToHome/ToHome";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const DetailsPage = () => {
     axios(`https://deploy-production-962d.up.railway.app/videogames/${id}`)
       .then((res) => {
         setGame(res.data.game.data);
-        console.log(res.data.game.data)
+        console.log(res.data.game.data);
       })
       .catch((error) => setError(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,6 +32,7 @@ const DetailsPage = () => {
 
   return (
     <div className={s.DetailsPage}>
+      <ToHome />
       <div className={s.border}>
         <img src={game.image} alt={game.name} />
 

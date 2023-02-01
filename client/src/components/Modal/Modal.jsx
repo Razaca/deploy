@@ -7,8 +7,8 @@ const Modal = ({ children, isOpen, closeModal }) => {
   const dispatch = useDispatch();
 
   function closeAndDeleteError() {
-    closeModal();
     dispatch(cleanErrors());
+    closeModal();
   }
 
   return (

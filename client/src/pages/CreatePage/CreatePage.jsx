@@ -10,6 +10,7 @@ import validation from "./validate";
 
 import Button from "../../components/Button/Button";
 import Title from "../../components/Title/Title";
+import ToHome from "../../components/ToHome/ToHome";
 
 const initialForm = {
   name: "",
@@ -39,6 +40,7 @@ const CreatePage = () => {
 
   return (
     <div className={s.CreatePage}>
+      <ToHome />
       <Title />
       <h3>Crear juego</h3>
       <div className={s.form}>
@@ -117,7 +119,6 @@ const CreatePage = () => {
         <Platforms platforms={platformsArray} handleChange={handleChange} />
 
         <Button fn={() => handleSubmit()}>Agregar</Button>
-        <Button fn={() => console.log(form)}>log</Button>
       </div>
     </div>
   );

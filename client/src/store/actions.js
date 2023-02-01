@@ -40,15 +40,15 @@ export const findGames = (name) => {
         return response.json();
       })
       .then((data) => {
-        console.log({data});
         if (data.error) {
-          dispatch({ type: ERROR, payload: data.err });
+          console.log({ data });
+          dispatch({ type: ERROR, payload: data.error });
         } else {
           dispatch({ type: FIND_GAMES, payload: data.games });
         }
       })
       .catch((error) => {
-        console.log({error});
+        console.log({ error });
         dispatch({ type: ERROR, payload: error });
       });
   };
@@ -61,7 +61,7 @@ export const setGenres = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
-          dispatch({ type: ERROR, payload: data.err });
+          dispatch({ type: ERROR, payload: data.error });
         } else {
           dispatch({ type: SET_GENRES, payload: data.genres });
         }
@@ -109,12 +109,12 @@ export const reverseOrder = () => {
 export const setError = (error) => {
   return {
     type: ERROR,
-    payload: error
+    payload: error,
   };
-}
+};
 
 export const setLoading = () => {
-  return{
-    type: LOADING
-  }
-}
+  return {
+    type: LOADING,
+  };
+};
