@@ -60,7 +60,7 @@ export const useForm = (initialForm, validateForm) => {
     };
 
     fetch(
-      "https://deploy-production-962d.up.railway.app/videogames/videogames",
+      "https://deploy-production-962d.up.railway.app/videogames",
       requestOption
     )
       .then((response) => response.text())
