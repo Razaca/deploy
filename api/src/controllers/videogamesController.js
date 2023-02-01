@@ -77,7 +77,7 @@ async function getVideogameById(id) {
       released: game.released,
       rating: game.rating,
       image: game.background_image,
-      platforms: game.platforms,
+      platforms: el.platforms.map((el) => el.platform.name),
       genres: game.genres.map((el) => el.name),
     };
 

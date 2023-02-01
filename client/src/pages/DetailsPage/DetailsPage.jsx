@@ -37,6 +37,13 @@ const DetailsPage = () => {
         <img src={game.image} alt={game.name} />
 
         <h2>{game.name}</h2>
+        <span>{game.rating}</span>
+        <div>
+          plataformas:
+          {game.platforms?.map((el, i) => (
+            <span key={i}>{el.platform.name}</span>
+          ))}
+        </div>
         <div
           dangerouslySetInnerHTML={{ __html: game.description }}
           className={s.description}
