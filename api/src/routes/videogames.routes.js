@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     games = await getVideogames(name, page);
     res.status(200).json({ games });
   } catch (error) {
-    res.status(400).json({ err: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
 
@@ -22,7 +22,7 @@ router.get("/:idVideogame", async (req, res) => {
     const game = await getVideogameById(idVideogame);
     res.status(200).json({ game });
   } catch (error) {
-    res.status(400).json({ err: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
 
@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
     });
     res.json({ game });
   } catch (error) {
-    res.status(400).json({ err: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
 

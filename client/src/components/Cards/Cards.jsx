@@ -24,6 +24,7 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
 
   function handlePage(op) {
     window.scrollTo(0, 0);
+    dispatch(setLoading())
     dispatch(getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`));
     setPage(op);
   }

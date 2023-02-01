@@ -40,6 +40,7 @@ export const findGames = (name) => {
         return response.json();
       })
       .then((data) => {
+        console.log({data});
         if (data.error) {
           dispatch({ type: ERROR, payload: data.err });
         } else {
@@ -47,6 +48,7 @@ export const findGames = (name) => {
         }
       })
       .catch((error) => {
+        console.log({error});
         dispatch({ type: ERROR, payload: error });
       });
   };

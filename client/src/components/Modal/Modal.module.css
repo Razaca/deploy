@@ -19,13 +19,26 @@
     min-height: 200px;
     max-height: 600px;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.644);
+    border: 5px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: var(--blue-neon);
+    color: var(--other-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .modalClose {
     position: absolute;
-    top: 1rem;
+    top: .5rem;
     right: 1rem;
+    background-color: transparent;
+    border: none;
+    color: var(--other-color);
+    font-size: 1.7rem;
+    text-shadow: 0 0 15px var(--other-color);
 }
 
 .modal.isOpen {

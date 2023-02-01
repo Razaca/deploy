@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  findGames,
-
-  searchByGenre,
-} from "../../store/actions";
+import { findGames, searchByGenre, setLoading } from "../../store/actions";
 import Button from "../Button/Button";
 import s from "./SearchPanel.module.css";
 
@@ -12,9 +8,10 @@ const SearchPanel = ({ setShow, handlePaginate }) => {
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
-  const { genres } = useSelector((store) => store);
+  const { genres, loading } = useSelector((store) => store);
 
   function handleSearch() {
+    dispatch(setLoading());
     dispatch(findGames(input));
     setShow("search");
   }
@@ -33,7 +30,9 @@ const SearchPanel = ({ setShow, handlePaginate }) => {
         placeholder="NOMBRE DEL JUEGO"
         value={input}
       />
-      <Button fn={handleSearch}>Buscar</Button>
+      <Button fn={handleSearch} disabled={loading ? true : false}>
+        Buscar
+      </Button>
       <div>
         <label htmlFor="">genre:</label>
         {genres.length && (
