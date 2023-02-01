@@ -24,7 +24,7 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
 
   function handlePage(op) {
     window.scrollTo(0, 0);
-    dispatch(getGames(`http://localhost:3001/videogames?page=${pages + 1}`));
+    dispatch(getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`));
     setPage(op);
   }
 
@@ -87,7 +87,7 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
             fn={() => {
               dispatch(setLoading())
               dispatch(
-                getGames(`http://localhost:3001/videogames?page=${pages + 1}`)
+                getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`)
               );
             }}
             disabled={loading ? true : false}

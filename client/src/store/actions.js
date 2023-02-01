@@ -33,7 +33,7 @@ export const getGames = (url) => {
 };
 
 export const findGames = (name) => {
-  const url = `http://localhost:3001/videogames?name=${name}`;
+  const url = `https://deploy-production-962d.up.railway.app/videogames?name=${name}`;
   return function (dispatch) {
     fetch(url)
       .then((response) => {
@@ -53,7 +53,7 @@ export const findGames = (name) => {
 };
 
 export const setGenres = () => {
-  const url = `http://localhost:3001/genres`;
+  const url = `https://deploy-production-962d.up.railway.app/genres`;
   return function (dispatch) {
     fetch(url)
       .then((response) => response.json())

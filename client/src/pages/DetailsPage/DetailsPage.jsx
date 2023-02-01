@@ -9,7 +9,7 @@ const DetailsPage = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios(`http://localhost:3001/videogames/${id}`)
+    axios(`https://deploy-production-962d.up.railway.app/videogames/${id}`)
       .then((res) => {
         setGame(res.data.game.data);
         console.log(res.data.game.data)
