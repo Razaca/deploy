@@ -38,10 +38,18 @@ const DetailsPage = () => {
 
         <h2>{game.name}</h2>
         <span>{game.rating}</span>
+        <br />
+        <span>{game.released}</span>
         <div>
           plataformas:
           {game.platforms?.map((el, i) => (
             <span key={i}>{el.platform.name}</span>
+          ))}
+        </div>
+        <div>
+          generos:
+          {game.genres?.map((el, i) => (
+            <span key={i}>{el}</span>
           ))}
         </div>
         <div

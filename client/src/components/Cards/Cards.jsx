@@ -23,10 +23,32 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
   }
 
   function handlePage(op) {
-    window.scrollTo(0, 0);
-    dispatch(setLoading())
-    dispatch(getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`));
+    if (split[split.length - 1].length < 15 || pages % 3 === 0) {
+      dispatch(setLoading());
+      dispatch(
+        getGames(
+          `https://deploy-production-962d.up.railway.app/videogames?page=${
+            pages + 1
+          }`
+        )
+      );
+    }
+    //window.scrollTo(0, 0);
     setPage(op);
+  }
+
+  function handlePageByIndex(page) {
+    if (split[page].length < 15) {
+      dispatch(setLoading());
+      dispatch(
+        getGames(
+          `https://deploy-production-962d.up.railway.app/videogames?page=${
+            pages + 1
+          }`
+        )
+      );
+    }
+    setPage(page);
   }
 
   if (paginate) {
@@ -40,7 +62,12 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
           <label htmlFor="paginate">Paginas:</label>
           <input onClick={handlePaginate} type="checkbox" />
         </div>
-        <Navigate handlePage={handlePage} page={page} />
+        <Navigate
+          handlePage={handlePage}
+          page={page}
+          arrayPages={split.length}
+          handlePageByIndex={handlePageByIndex}
+        />
         <div className={s.Cards}>
           {split.length ? (
             split[page].map((el, i) => (
@@ -54,7 +81,12 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
             <Loader />
           )}
         </div>
-        <Navigate handlePage={handlePage} page={page} />
+        <Navigate
+          handlePage={handlePage}
+          page={page}
+          arrayPages={split.length}
+          handlePageByIndex={handlePageByIndex}
+        />
       </>
     );
   } else {
@@ -86,9 +118,13 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
         {show === "all" && (
           <Button
             fn={() => {
-              dispatch(setLoading())
+              dispatch(setLoading());
               dispatch(
-                getGames(`https://deploy-production-962d.up.railway.app/videogames?page=${pages + 1}`)
+                getGames(
+                  `https://deploy-production-962d.up.railway.app/videogames?page=${
+                    pages + 1
+                  }`
+                )
               );
             }}
             disabled={loading ? true : false}

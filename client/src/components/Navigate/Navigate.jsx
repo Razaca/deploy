@@ -1,9 +1,21 @@
 import s from "./Navigate.module.css";
 import { useSelector } from "react-redux";
 
-const Navigate = ({ handlePage, page }) => {
+const Navigate = ({ handlePage, page, arrayPages, handlePageByIndex }) => {
   const { loading } = useSelector((store) => store);
-  
+
+  function createIndex(arrayPages) {
+    let index = [];
+    for (let i = 0; i < arrayPages; i++) {
+      index.push(
+        <span onClick={() => handlePageByIndex(i)} key={i}>
+          {i + 1}
+        </span>
+      );
+    }
+    return index;
+  }
+
   return (
     <div className={s.Navigate}>
       <button
@@ -12,7 +24,10 @@ const Navigate = ({ handlePage, page }) => {
       >
         Atras
       </button>
-      <span>{page + 1}</span>
+      {/* <span>{page + 1}</span> */}
+
+      {createIndex(arrayPages)}
+
       <button
         onClick={() => handlePage(page + 1)}
         disabled={loading ? true : false}
