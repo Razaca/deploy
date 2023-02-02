@@ -9,6 +9,14 @@ export default function validation(data) {
     platforms: "",
   };
 
+  const genres = [];
+  for (const key in data.genres) {
+    if (data.genres[key]) {
+      genres.push(parseInt(key));
+    }
+  }
+  const platforms = Object.values(data.platforms);
+
   /* name */
   if (!data.name) {
     errors.name = "Debe completar este campo";
@@ -40,19 +48,22 @@ export default function validation(data) {
   }
 
   /* rating */
-  if (!data.rating) {
-    errors.platforms = "Debe completar este campo";
-  } else if (!data.rating < 5 ) {
-    errors.platforms = "El rating es entre 0 y 5";
+
+  if (data.rating < 0) {
+    errors.rating = "El rating es entre 0 y 5";
+  } else if (data.rating > 5) {
+    errors.rating = "El rating es entre 0 y 5";
   }
 
   /* genres */
-  if (!data.genres.length) {
+
+  if (genres.length <= 0) {
     errors.genres = "Debes elegir por lo menos un genero";
   }
 
   /* platform */
-  if (!data.platforms.length) {
+  console.log({ platforms, genres });
+  if (platforms.length <= 0) {
     errors.platforms = "Debes elegir por lo menos una plataforma";
   }
 

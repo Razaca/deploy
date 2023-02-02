@@ -1,12 +1,28 @@
 .DetailsPage {
+    min-width: 100vh;
     padding-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 3rem;
 }
 
-img {
+.DetailsPage i {
+    color: var(--other-color);
+    margin-right: 1rem;
+}
+
+.data {
+    text-align: start;
+    margin: 3rem;
+}
+
+.data span {
+    margin-right: 1rem;
+}
+
+.DetailsPage img {
     width: 50vw;
     object-fit: contain;
     padding: 1rem;
@@ -15,25 +31,26 @@ img {
     border-radius: 5px;
 }
 
-.border{
+.border {
+    min-width: 85%;
     margin: 1rem 4rem;
     padding: 1.3rem;
+    padding-bottom: 3rem;
     border: 3px solid var(--other-color);
     box-shadow: var(--pink-neon);
     border-radius: 5px;
 }
 
-.border h2{
+.border h2 {
     margin: 1rem 0;
     font-family: "MyFont";
     font-size: 3rem;
     text-shadow: 0 0 30px var(--other-color);
 }
 
-.description{
+.description {
     font-size: 2rem;
     font-family: "Neon";
     margin: 0 3rem;
     line-height: 1.5rem;
 }
-

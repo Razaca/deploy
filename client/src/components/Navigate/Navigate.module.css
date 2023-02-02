@@ -4,3 +4,10 @@
     justify-content: center;
     gap: 1rem;
 }
+
+.Navigate span{
+    cursor: pointer;
+}
+.active {
+    color: var(--other-color);
+}

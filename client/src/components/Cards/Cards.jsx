@@ -23,16 +23,21 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
   }
 
   function handlePage(op) {
-    if (split[split.length - 1].length < 15 || pages % 3 === 0) {
-      dispatch(setLoading());
-      dispatch(
-        getGames(
-          `https://deploy-production-962d.up.railway.app/videogames?page=${
-            pages + 1
-          }`
-        )
-      );
+    if (split.length === page + 2) {
+      if (split[split.length - 1].length < 15 || pages % 3 === 0) {
+        dispatch(setLoading());
+        dispatch(
+          getGames(
+            `https://deploy-production-962d.up.railway.app/videogames?page=${
+              pages + 1
+            }`
+          )
+        );
+      } else {
+        handlePageByIndex(page);
+      }
     }
+
     //window.scrollTo(0, 0);
     setPage(op);
   }
@@ -60,7 +65,12 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
         {show === "all" && <OrderButtons />}
         <div>
           <label htmlFor="paginate">Paginas:</label>
-          <input onClick={handlePaginate} type="checkbox" />
+          <input
+            onClick={handlePaginate}
+            type="checkbox"
+            checked={true}
+            value={true}
+          />
         </div>
         <Navigate
           handlePage={handlePage}
@@ -70,7 +80,7 @@ const Cards = ({ games, pages, paginate = false, show, handlePaginate }) => {
         />
         <div className={s.Cards}>
           {split.length ? (
-            split[page].map((el, i) => (
+            split[page]?.map((el, i) => (
               <div key={i}>
                 <Suspense fallback={<Loader />}>
                   <Card game={el} />

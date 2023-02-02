@@ -8,7 +8,7 @@ const Navigate = ({ handlePage, page, arrayPages, handlePageByIndex }) => {
     let index = [];
     for (let i = 0; i < arrayPages; i++) {
       index.push(
-        <span onClick={() => handlePageByIndex(i)} key={i}>
+        <span onClick={() => handlePageByIndex(i)} key={i} className={page === i ?s.active :null}>
           {i + 1}
         </span>
       );

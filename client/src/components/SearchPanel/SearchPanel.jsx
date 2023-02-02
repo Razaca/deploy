@@ -34,7 +34,7 @@ const SearchPanel = ({ setShow, handlePaginate }) => {
         Buscar
       </Button>
       <div>
-        <label htmlFor="">genre:</label>
+        <label htmlFor="">GENERO: </label>
         {genres.length && (
           <select onChange={(e) => handleSelect(e)} name="genre">
             <option value="---">---</option>

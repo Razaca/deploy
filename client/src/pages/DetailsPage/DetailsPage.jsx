@@ -30,6 +30,47 @@ const DetailsPage = () => {
     );
   }
 
+  if (typeof game.id === "string") {
+    console.log(game);
+    return (
+      <div className={s.DetailsPage}>
+        <ToHome />
+        <div className={s.border}>
+          <img src={game.image} alt={game.name} />
+
+          <h2>{game.name}</h2>
+          <div className={s.data}>
+            <div>
+              <i>rating: </i>
+              {game.rating}
+            </div>
+            <div>
+              <i>estreno: </i>
+              {game.released}
+            </div>
+            <div>
+              <i>plataformas: </i>
+              {game.platforms?.map((el, i) => (
+                <span key={i}>{el}</span>
+              ))}
+            </div>
+            <div>
+              <i>generos: </i>
+              {game.genres?.map((el, i) => (
+                <span key={i}>{el.name}</span>
+              ))}
+            </div>
+          </div>
+
+          <div
+            dangerouslySetInnerHTML={{ __html: game.description }}
+            className={s.description}
+          ></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={s.DetailsPage}>
       <ToHome />
@@ -37,21 +78,29 @@ const DetailsPage = () => {
         <img src={game.image} alt={game.name} />
 
         <h2>{game.name}</h2>
-        <span>{game.rating}</span>
-        <br />
-        <span>{game.released}</span>
-        <div>
-          plataformas:
-          {game.platforms?.map((el, i) => (
-            <span key={i}>{el.platform.name}</span>
-          ))}
+        <div className={s.data}>
+          <div>
+            <i>rating: </i>
+            {game.rating}
+          </div>
+          <div>
+            <i>estreno: </i>
+            {game.released}
+          </div>
+          <div>
+            <i>plataformas: </i>
+            {game.platforms?.map((el, i) => (
+              <span key={i}>{el.platform.name}</span>
+            ))}
+          </div>
+          <div>
+            <i>generos: </i>
+            {game.genres?.map((el, i) => (
+              <span key={i}>{el}</span>
+            ))}
+          </div>
         </div>
-        <div>
-          generos:
-          {game.genres?.map((el, i) => (
-            <span key={i}>{el}</span>
-          ))}
-        </div>
+
         <div
           dangerouslySetInnerHTML={{ __html: game.description }}
           className={s.description}

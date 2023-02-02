@@ -5,7 +5,7 @@
 
 .cards {
     min-height: 50vh;
-    border: 3px solid var(--primary-color);
+    border: 5px solid var(--primary-color);
     box-shadow: var(--blue-neon);
     border-radius: 5px;
     position: relative;

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { cleanErrors } from "../../store/actions";
 import s from "./Modal.module.css";
 
-const Modal = ({ children, isOpen, closeModal }) => {
+const Modal = ({ children, isOpen, closeModal, error = true }) => {
   const handleModalContainerClick = (e) => e.stopPropagation();
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const Modal = ({ children, isOpen, closeModal }) => {
   return (
     <div className={`${s.modal} ${isOpen && s.isOpen}`} onClick={closeModal}>
       <div className={s.modalContainer} onClick={handleModalContainerClick}>
-        <button className={s.modalClose} onClick={closeAndDeleteError}>
+        <button className={s.modalClose} onClick={error ?closeAndDeleteError :closeModal}>
           X
         </button>
         {children}
