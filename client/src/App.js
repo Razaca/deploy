@@ -9,7 +9,6 @@ import HomePage from "./pages/HomePage/HomePage";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import CreatePage from "./pages/CreatePage/CreatePage";
 import Modal from "./components/Modal/Modal";
-import Footer from "./components/Footer/Footer";
 
 function App() {
   const [isOpenModalError, closeModalError] = useModal(true);
@@ -29,7 +28,6 @@ function App() {
         <Route path={"/:id"} element={<DetailsPage />} />
         <Route path={"/create"} element={<CreatePage />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

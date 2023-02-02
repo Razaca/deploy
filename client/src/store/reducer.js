@@ -52,8 +52,8 @@ const reducer = (state = initialState, action) => {
       };
 
     case ORDER_BY_NAME:
-      const orderByName = state.videogames.sort((a, b) =>
-        a.name.localeCompare(b.name)
+      const orderByName = state.videogames.sort(
+        (a, b) => a.name.localeCompare(b.name) // devuelve un número negativo si la primera cadena es anterior a la segunda 0 si son iguales
       );
       return {
         ...state,
@@ -72,7 +72,7 @@ const reducer = (state = initialState, action) => {
     case SEARCH_BY_GENRE:
       const gamesSomeGenre = state.videogames.filter((game) => {
         if (game.genres)
-          return game.genres.some((genre) => genre.name === action.payload);
+          return game.genres.some((genre) => genre.name === action.payload); //comprueva q un elemento del array cumpla la condicion
       });
       return {
         ...state,
